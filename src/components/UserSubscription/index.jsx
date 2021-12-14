@@ -15,9 +15,12 @@ const UserSubscription = ({user}) => {
     setValue(newValue);
   };
 
-  const wishlist = user.wishlist
-  const rents = user.rent_games
-  const rentsHistory = user.rented_games
+  const wishlist = user.rent.wishlist
+  const rents = user.rent.rent_games
+  const rentsHistory = user.rent.rented_games
+  console.log("wishlsit", wishlist)
+  console.log("rents", rents)
+  console.log("rentsHistory", rentsHistory)
 
   const TabPanel = () => {
     switch (value) {

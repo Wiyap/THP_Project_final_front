@@ -13,18 +13,19 @@ import EditGameForm from 'components/forms/EditGame/EditGameForm';
 
 const GameCard = ({ game, edit }) => {
   const [editMode, setEditMode] = useState(false)
-  const user = useSelector(state => state.userReducer.user_info)
-
-  const cardHeight = window.screen.width / 8
+  const userReducer = useSelector(state => state.userReducer)
+  const user = userReducer.user_info
+  
   const navigate = useNavigate()
-
+  const cardHeight = window.screen.width / 8
+  
   const handleRent = async () => {
-    if (!isSigned(user)){
+    if (!isSigned(userReducer)){
       navigate('/connexion')
-    } else if (!isSubscribed(user)) {
+    } else if (!isSubscribed(userReducer)) {
       navigate('/abonnement')
     } else {
-      const response = await APIManager.createRent({quantity: 1, user_id: user.user_info.id , game_id: game.id})
+      const response = await APIManager.createRent({quantity: 1, user_id: user.id , game_id: game.id})
       if(!response.error) alert("jeu ajouter au favoris")
     }
   }

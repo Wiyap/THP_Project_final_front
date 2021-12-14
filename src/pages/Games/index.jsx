@@ -22,6 +22,7 @@ const Games = ({edit}) => {
         } else {
           dispatch(fetchGamesSuccess(response))
           setGames(response)
+          console.log("GAME", games)
         }
       }
       fetchAllGames()
